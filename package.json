@@ -1,0 +1,30 @@
+{
+    "name": "pgnotify-emitter",
+    "version": "1.0.0",
+    "url": "https://github.com/robertbruno/pgnotify-emitter",
+    "private": true,
+    "scripts": {
+        "app:lint": "eslint ./src",
+        "prepare": "husky install .husky",
+        "commit-msg": "commitlint --edit $HUSKY_GIT_PARAMS",
+        "standard-version": "standard-version --no-verify",
+        "docker:volumen": "./scripts/docker-volumen.sh -p \"$PWD\"",
+        "docker:clean": "rm -rfv ./.config ./.local ./.cache ./.npm ./src/node_modules",
+        "docker:compose": "env DOCKER_COMPOSE_ARGS_OPTS=\"-f ./docker-compose-dev.yml\" ./scripts/docker-compose-wrapper.sh",
+        "docker:compose:up": "npm-run-all docker:volumen 'docker:compose up'",
+        "docker:compose:down": "npm-run-all 'docker:compose down' docker:clean"
+    },
+    "standard-version": {
+        "skip": {
+            "tag": true
+        }
+    },
+    "devDependencies": {
+        "@commitlint/cli": "^17.7.2",
+        "@commitlint/config-conventional": "^15.0.0",
+        "husky": "^7.0.4",
+        "npm-run-all": "^4.1.5",
+        "rimraf": "^3.0.2",
+        "standard-version": "^9.3.2"
+    }
+}

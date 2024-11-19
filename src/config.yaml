@@ -1,0 +1,45 @@
+# postges database server configurations
+databases:
+    postgres:
+        enabled: true
+        host: postgresql
+        port: 5432
+        database: postgres
+        user: postgres
+        password: postgres
+        ssl: false
+
+# emitter servers configuration
+emitters:
+    local:
+        enabled: true
+        # host: ws://localhost
+        # port: 8080
+        # secure: true
+
+# Define emitter vs notify database mapping
+notify:
+
+    -
+        # notify settings name
+        name: 'emitter-channel-demo1'
+        # Log the message and meta data to the console (optional)
+        debug: true
+        # Is this notifier enabled, disabled if absent/ !true
+        enabled: true
+        # Database to connect to (required), see databases section of this config
+        database: postgres
+        # Emitter to connect to (required), see emitters section of this config
+        emitterServerName: local
+        # Emitter global options for keygen
+        # https://emitter.io/develop/getting-started/
+        emitterKeygen:
+            # emitter Secret key
+            #key: I8ynnRsUTMCrqT2V_eugQ6TKqrxTMrlF
+            key: Eeb5Pe2u0S9sKRJrAdATv2zWBPA8awS5
+            # The type of access
+            type: rwlsp
+            #  The time to live describes how long the channel key should be valid
+            ttl: 0
+
+

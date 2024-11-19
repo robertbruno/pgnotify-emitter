@@ -1,0 +1,44 @@
+# postges database server configurations
+databases:
+    postgres:
+        enabled: true
+        host: ${PGHOST}
+        port: ${PGPORT}
+        database: ${PGDATABASE}
+        user: ${PGUSER}
+        password: ${PGPASSWORD}
+        ssl: ${PGSSLMODE}
+
+# emitter servers configuration
+emitters:
+    local:
+        enabled: true
+        host: ${EMITTER_HOST}
+        port: ${EMITTER_PORT}
+        secure: ${EMITTER_SECURE}
+
+# Define emitter vs notify database mapping
+notify:
+
+    -
+        # notify settings name
+        name: '${PGNOTIFY_CHANNEL}'
+        # Log the message and meta data to the console (optional)
+        debug: ${PGNOTIFY_DEBUG}
+        # Is this notifier enabled, disabled if absent/ !true
+        enabled: true
+        # Database to connect to (required), see databases section of this config
+        database: postgres
+        # Emitter to connect to (required), see emitters section of this config
+        emitterServerName: local
+        # Emitter global options for keygen
+        # https://emitter.io/develop/getting-started/
+        emitterKeygen:
+            # emitter Secret key
+            key: ${EMITTERKEYGEN_KEY}
+            # The type of access
+            type: ${EMITTERKEYGEN_TYPE}
+            #  The time to live describes how long the channel key should be valid
+            ttl: ${EMITTERKEYGEN_TTL}
+
+
