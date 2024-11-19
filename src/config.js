@@ -70,7 +70,7 @@ function $main() {
                     logger.log('info', `database(${index}) connecting...`);
                     list[index] = pgp(Object.assign({
                         port: 5432,
-                        ssl:  {
+                        ssl:  typeof c.ssl === "boolean" ? c.ssl : {
                             // @see https://stackoverflow.com/questions/76899023/rds-while-connection-error-no-pg-hba-conf-entry-for-host
                             rejectUnauthorized: false
                         },
