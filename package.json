@@ -1,6 +1,6 @@
 {
     "name": "pgnotify-emitter",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "url": "https://github.com/robertbruno/pgnotify-emitter",
     "private": true,
     "scripts": {
