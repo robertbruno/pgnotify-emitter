@@ -1,0 +1,6 @@
+global:
+  scrape_interval: 5s
+scrape_configs:
+  - job_name: "pgnotify-emitter"
+    static_configs:
+      - targets: ["pgnotify-emitter:9021"]
