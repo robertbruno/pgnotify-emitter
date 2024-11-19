@@ -136,5 +136,5 @@ You can visualize this metrics in [Grafana](https://grafana.com/) with the follo
 
 ## Help
 
-* To view the change history [changelog](./src/CHANGELOG.md)
+* To view the change history [changelog](./CHANGELOG.md)
 * To view or report bug's go to [issues](https://github.com/robertbruno/pgnotify-emitter/issues)
