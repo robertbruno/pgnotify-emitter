@@ -21,14 +21,11 @@ ENV NODE_ENV=production \
 # install gettext for envsubst
 RUN apk update && apk add gettext
 
-WORKDIR /opt/${SERVICE_NAME}/
+WORKDIR /opt/pgnotify-emitter
 
 COPY ./src/package.json .
-
 RUN npm install --production 
-
 COPY ./src .
-RUN chmod +x $CMD
 
 COPY scripts/docker-entrypoint.sh /
 COPY scripts/20-envsubst-on-templates.sh /docker-entrypoint.d/20-envsubst-on-templates.sh
